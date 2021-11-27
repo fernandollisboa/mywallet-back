@@ -10,6 +10,4 @@ if (process.env.NODE_ENV === 'prod') {
   envFile = '.env.dev';
 }
 
-dotenv.config({
-  path: envFile,
-});
+dotenv.config({ path: envFile });

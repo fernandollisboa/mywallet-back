@@ -1,16 +1,23 @@
 import statusCode from '../enum/statusCode.js';
 import * as userService from '../services/userService.js';
+import { loginSchema, signUpSchema } from '../schemas/userSchema.js';
 
 export async function signUp(req, res) {
+  const joiValidation = signUpSchema.validate(req.body);
+  if (joiValidation.error) {
+    return res.sendStatus(statusCode.BAD_REQUEST);
+  }
+
   const { name, email, password } = req.body;
 
-  if (!name || !email || !password) return res.sendStatus(statusCode.BAD_REQUEST);
-
-  if (await userService.findUserByEmail({ email })) return res.sendStatus(statusCode.CONFLICT);
+  if (!name.trim() || !email.trim() || !password.trim()) {
+    return res.sendStatus(statusCode.BAD_REQUEST);
+  }
 
   try {
-    const user = userService.createUser({ name, email, password });
+    if (await userService.findUserByEmail({ email })) return res.sendStatus(statusCode.CONFLICT);
 
+    const user = userService.createUser({ name, email, password });
     if (!user) return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
 
     return res.sendStatus(statusCode.CREATED);
@@ -21,9 +28,11 @@ export async function signUp(req, res) {
 }
 
 export async function login(req, res) {
-  const { email, password } = req.body;
+  const joiValidation = loginSchema.validate(req.body);
+  if (joiValidation.error) return res.sendStatus(statusCode.BAD_REQUEST);
 
-  if (!email || !password) return res.sendStatus(statusCode.BAD_REQUEST);
+  const { email, password } = req.body;
+  if (!email.trim() || !password.trim()) return res.sendStatus(statusCode.BAD_REQUEST);
 
   try {
     const sessionToken = await userService.authenticateUser({ email, password });
@@ -32,6 +41,7 @@ export async function login(req, res) {
     return res.send({ token: sessionToken }).status(statusCode.OK);
   } catch (err) {
     console.trace(err.stack);
+
     return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
   }
 }
