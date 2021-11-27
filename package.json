@@ -1,0 +1,46 @@
+{
+  "name": "node-template",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "NODE_ENV=prod node ./src/server.js",
+    "dev": "NODE_ENV=dev nodemon ./src/server.js",
+    "test": "NODE_ENV=test npx jest -i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandollisboa/node-app-template.git"
+  },
+  "author": "fernandollisboa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernandollisboa/node-app-template/issues"
+  },
+  "homepage": "https://github.com/fernandollisboa/node-app-template#readme",
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.16.4",
+    "@babel/preset-env": "^7.16.4",
+    "babel-jest": "^27.3.1",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "nodemon": "^2.0.15",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "faker": "^5.5.3",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "prettier": "2.5.0",
+    "supertest": "^6.1.6"
+  }
+}
