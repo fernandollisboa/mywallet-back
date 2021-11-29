@@ -7,7 +7,6 @@ export async function postTransaction(req, res) {
 
   const joiValidation = transactionSchema.validate({ value, type });
   if (joiValidation.error) {
-    console.log(joiValidation.error);
     return res.sendStatus(statusCode.BAD_REQUEST);
   }
 
@@ -25,7 +24,6 @@ export async function postTransaction(req, res) {
 
     return res.sendStatus(statusCode.CREATED);
   } catch (err) {
-    console.log(err.stack);
     return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
   }
 }
@@ -39,7 +37,6 @@ export async function getUserTransactions(req, res) {
 
     return res.send(fetchedTransactions).status(statusCode.OK);
   } catch (err) {
-    console.log(err.stack);
     return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
   }
 }
@@ -53,7 +50,6 @@ export async function getUserBalance(req, res) {
 
     return res.status(statusCode.OK).send({ userBalance });
   } catch (err) {
-    console.log(err.stack);
     return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
   }
 }

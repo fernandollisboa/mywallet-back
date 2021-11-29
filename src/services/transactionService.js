@@ -20,10 +20,8 @@ export async function getUserBalance({ userId }) {
   const userTransactions = await transactionRepository.selectAllByUserId({ userId });
 
   const valuesArray = userTransactions.map((t) => (t.type === 'INC' ? t.value : t.value * -1));
-  console.log(valuesArray);
 
   const sum = valuesArray.map((v) => Number(v)).reduce((total, curr) => total + curr);
-  console.log('feijoada');
 
   return sum;
 }

@@ -22,7 +22,6 @@ export async function postSignUp(req, res) {
 
     return res.sendStatus(statusCode.CREATED);
   } catch (err) {
-    console.log(err.stack);
     return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
   }
 }

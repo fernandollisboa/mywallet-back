@@ -7,7 +7,7 @@ export default async function auth(req, res, next) {
   const { authorization } = req.headers;
   const token = authorization?.split('Bearer ')[1];
 
-  if (!token) return res.sendStatus(statusCode.UNAUTHORIZED);
+  if (!token) return res.sendStatus(statusCode.BAD_REQUEST);
 
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET);
@@ -19,8 +19,7 @@ export default async function auth(req, res, next) {
 
     req.body.userId = session.customer_id;
   } catch (err) {
-    console.log(err.stack);
-    return res.sendStatus(statusCode.BAD_REQUEST);
+    return res.sendStatus(statusCode.UNAUTHORIZED);
   }
 
   next();

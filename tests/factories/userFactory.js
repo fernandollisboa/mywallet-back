@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import faker from 'faker';
 import bcrypt from 'bcrypt';
 import connection from '../../src/database/connection.js';

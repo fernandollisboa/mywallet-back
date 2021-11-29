@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import faker from 'faker';
 
 export function generateSignupBody({ name, email, password, repeatPassword } = {}) {
@@ -14,5 +13,12 @@ export function generateLoginBody({ email, password } = {}) {
   return {
     email: email || faker.internet.email(),
     password: password || 'password',
+  };
+}
+
+export function generateTransactionBody({ value, type } = {}) {
+  return {
+    value: value || faker.finance.amount(0.01, 9999999, 2),
+    type: type || faker.random.arrayElement(['INC', 'OUT']),
   };
 }
