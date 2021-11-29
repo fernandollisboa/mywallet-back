@@ -3,21 +3,22 @@ import * as transactionService from '../services/transactionService.js';
 import { transactionSchema } from '../schemas/transactionSchema.js';
 
 export async function postTransaction(req, res) {
-  const { value, type } = req.body;
+  const { value, type, description } = req.body;
 
-  const joiValidation = transactionSchema.validate({ value, type });
+  const joiValidation = transactionSchema.validate({ value, type, description });
   if (joiValidation.error) {
     return res.sendStatus(statusCode.BAD_REQUEST);
   }
 
-  if (!value || !type) return res.sendStatus(statusCode.BAD_REQUEST);
-
+  if (!value || !type || !description) {
+    return res.sendStatus(statusCode.BAD_REQUEST);
+  }
   const { userId } = req.body;
 
   try {
     const createdTransaction = await transactionService.createTransaction({
       userId,
-      transaction: { value, type },
+      transaction: { value, type, description },
     });
 
     if (!createdTransaction) return res.sendStatus(statusCode.BAD_REQUEST);

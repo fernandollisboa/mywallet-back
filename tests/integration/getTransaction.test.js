@@ -1,5 +1,6 @@
 import '../../src/setup.js';
 import supertest from 'supertest';
+import dayjs from 'dayjs';
 import app from '../../src/app.js';
 import { clearDatabase, closeConnection } from '../util/database.js';
 import statusCode from '../../src/enum/statusCode.js';
@@ -33,7 +34,9 @@ describe('GET /transactions', () => {
 
     // prettier-ignore
     transactions.forEach((t, i) => expect(t).toEqual({
-      userId: Number(response.body[i].customer_id),
+      createdAt: dayjs(response.body[i].createdAt).format('DD-MM-YYYY'),
+      description: response.body[i].description,
+      userId: Number(response.body[i].userId),
       value: response.body[i].value,
       type: response.body[i].type,
     }));

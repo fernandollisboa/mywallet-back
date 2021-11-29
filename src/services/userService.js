@@ -37,5 +37,5 @@ export async function authenticateUser({ email, password }) {
   const jwToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
   const session = await upsertSessionToken({ userId: user.id, token: jwToken });
 
-  return session.token;
+  return { userName: user.name, token: session.token };
 }

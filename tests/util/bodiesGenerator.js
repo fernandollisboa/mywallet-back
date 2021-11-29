@@ -20,5 +20,6 @@ export function generateTransactionBody({ value, type } = {}) {
   return {
     value: value || faker.finance.amount(0.01, 9999999, 2),
     type: type || faker.random.arrayElement(['INC', 'OUT']),
+    description: faker.lorem.sentence(),
   };
 }

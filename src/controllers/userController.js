@@ -37,7 +37,8 @@ export async function postLogin(req, res) {
     const sessionToken = await userService.authenticateUser({ email, password });
     if (!sessionToken) return res.sendStatus(statusCode.UNAUTHORIZED);
 
-    return res.send({ token: sessionToken }).status(statusCode.OK);
+    const { userName, token } = sessionToken;
+    return res.send({ userName, token }).status(statusCode.OK);
   } catch (err) {
     console.trace(err.stack);
     return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
