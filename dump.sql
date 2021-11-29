@@ -99,7 +99,9 @@ CREATE TABLE public.transactions (
     id integer NOT NULL,
     customer_id bigint NOT NULL,
     value numeric(9,2) NOT NULL,
-    type character(3) NOT NULL
+    type character(3) NOT NULL,
+    description text NOT NULL,
+    created_at date NOT NULL
 );
 
 
@@ -168,7 +170,7 @@ COPY public.sessions (id, customer_id, token) FROM stdin;
 -- Data for Name: transactions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.transactions (id, customer_id, value, type) FROM stdin;
+COPY public.transactions (id, customer_id, value, type, description, created_at) FROM stdin;
 \.
 
 
@@ -176,21 +178,21 @@ COPY public.transactions (id, customer_id, value, type) FROM stdin;
 -- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.customers_id_seq', 1, true);
+SELECT pg_catalog.setval('public.customers_id_seq', 561, true);
 
 
 --
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 1, true);
+SELECT pg_catalog.setval('public.sessions_id_seq', 313, true);
 
 
 --
 -- Name: transactions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.transactions_id_seq', 17, true);
+SELECT pg_catalog.setval('public.transactions_id_seq', 288, true);
 
 
 --
@@ -252,4 +254,3 @@ ALTER TABLE ONLY public.transactions
 --
 -- PostgreSQL database dump complete
 --
-
