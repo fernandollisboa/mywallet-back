@@ -43,58 +43,58 @@ describe('POST /transactions', () => {
     });
   });
 
-  // it('returns 400 when no token is given', async () => {
-  //   const body = {};
+  it('returns 400 when no token is given', async () => {
+    const body = {};
 
-  //   const response = await agent.post('/transactions').send(body);
+    const response = await agent.post('/transactions').send(body);
 
-  //   expect(response.status).toEqual(statusCode.BAD_REQUEST);
-  // });
+    expect(response.status).toEqual(statusCode.BAD_REQUEST);
+  });
 
-  // it('returns 400 for empty body but valid token', async () => {
-  //   const body = {};
-  //   const session = await createSession();
+  it('returns 400 for empty body but valid token', async () => {
+    const body = {};
+    const session = await createSession();
 
-  //   const response = await agent
-  //     .post('/transactions')
-  //     .send(body)
-  //     .set('Authorization', `Bearer ${session.token}`);
+    const response = await agent
+      .post('/transactions')
+      .send(body)
+      .set('Authorization', `Bearer ${session.token}`);
 
-  //   expect(response.status).toEqual(statusCode.BAD_REQUEST);
-  // });
+    expect(response.status).toEqual(statusCode.BAD_REQUEST);
+  });
 
-  // it('returns 400 for invalid transaction type', async () => {
-  //   const session = await createSession();
-  //   const body = generateTransactionBody({ type: 'ERR' });
+  it('returns 400 for invalid transaction type', async () => {
+    const session = await createSession();
+    const body = generateTransactionBody({ type: 'ERR' });
 
-  //   const response = await agent
-  //     .post('/transactions')
-  //     .send(body)
-  //     .set('Authorization', `Bearer ${session.token}`);
+    const response = await agent
+      .post('/transactions')
+      .send(body)
+      .set('Authorization', `Bearer ${session.token}`);
 
-  //   expect(response.status).toEqual(statusCode.BAD_REQUEST);
-  // });
+    expect(response.status).toEqual(statusCode.BAD_REQUEST);
+  });
 
-  // it('returns 401 for invalid token', async () => {
-  //   const body = {};
+  it('returns 401 for invalid token', async () => {
+    const body = {};
 
-  //   const response = await agent
-  //     .post('/transactions')
-  //     .send(body)
-  //     .set('Authorization', 'Bearer invalid_token');
+    const response = await agent
+      .post('/transactions')
+      .send(body)
+      .set('Authorization', 'Bearer invalid_token');
 
-  //   expect(response.status).toEqual(statusCode.UNAUTHORIZED);
-  // });
+    expect(response.status).toEqual(statusCode.UNAUTHORIZED);
+  });
 
-  // it('returns 400 for negative values', async () => {
-  //   const session = await createSession();
-  //   const body = generateTransactionBody({ value: '-0.01' });
+  it('returns 400 for negative values', async () => {
+    const session = await createSession();
+    const body = generateTransactionBody({ value: '-0.01' });
 
-  //   const response = await agent
-  //     .post('/transactions')
-  //     .send(body)
-  //     .set('Authorization', `Bearer ${session.token}`);
+    const response = await agent
+      .post('/transactions')
+      .send(body)
+      .set('Authorization', `Bearer ${session.token}`);
 
-  //   expect(response.status).toEqual(statusCode.BAD_REQUEST);
-  // });
+    expect(response.status).toEqual(statusCode.BAD_REQUEST);
+  });
 });
