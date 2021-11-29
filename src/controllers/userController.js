@@ -2,7 +2,7 @@ import statusCode from '../enum/statusCode.js';
 import * as userService from '../services/userService.js';
 import { loginSchema, signUpSchema } from '../schemas/userSchema.js';
 
-export async function signUp(req, res) {
+export async function postSignUp(req, res) {
   const joiValidation = signUpSchema.validate(req.body);
   if (joiValidation.error) {
     return res.sendStatus(statusCode.BAD_REQUEST);
@@ -27,7 +27,7 @@ export async function signUp(req, res) {
   }
 }
 
-export async function login(req, res) {
+export async function postLogin(req, res) {
   const joiValidation = loginSchema.validate(req.body);
   if (joiValidation.error) return res.sendStatus(statusCode.BAD_REQUEST);
 
@@ -41,7 +41,6 @@ export async function login(req, res) {
     return res.send({ token: sessionToken }).status(statusCode.OK);
   } catch (err) {
     console.trace(err.stack);
-
     return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
   }
 }

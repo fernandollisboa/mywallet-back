@@ -1,24 +1,25 @@
 {
-  "name": "node-template",
+  "name": "mywallet-api",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "main": "./src/server.js",
   "scripts": {
-    "start": "NODE_ENV=prod node ./src/server.js",
-    "dev": "NODE_ENV=dev nodemon ./src/server.js",
-    "test": "NODE_ENV=test npx jest -i --watchAll"
+    "start": "NODE_ENV=production NODE_TLS_REJECT_UNAUTHORIZED=0 node ./src/server.js",
+    "build": "NODE_ENV=production npx tsc --outDir dist",
+    "dev": "NODE_ENV=dev node ./src/server.js",
+    "test": "NODE_ENV=test npx jest -i"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fernandollisboa/node-app-template.git"
+    "url": "git+https://github.com/fernandollisboa/mywallet-back.git"
   },
   "author": "fernandollisboa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fernandollisboa/node-app-template/issues"
+    "url": "https://github.com/fernandollisboa/mywallet-back/issues"
   },
-  "homepage": "https://github.com/fernandollisboa/node-app-template#readme",
+  "homepage": "https://github.com/fernandollisboa/mywallet-back#readme",
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/preset-env": "^7.16.4",

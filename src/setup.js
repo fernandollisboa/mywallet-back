@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 
 let envFile;
 
-if (process.env.NODE_ENV === 'prod') {
+if (process.env.NODE_ENV === 'production') {
   envFile = '.env';
 } else if (process.env.NODE_ENV === 'test') {
   envFile = '.env.test';

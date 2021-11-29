@@ -32,6 +32,7 @@ export async function authenticateUser({ email, password }) {
   if (!user || !bcrypt.compareSync(password, user.password)) {
     return null;
   }
+  delete user.password;
 
   const jwToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
   const session = await upsertSessionToken({ userId: user.id, token: jwToken });

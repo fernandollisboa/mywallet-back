@@ -22,3 +22,8 @@ export async function selectByUserId({ userId }) {
   ]);
   return session.rows[0];
 }
+
+export async function selectByToken({ token }) {
+  const session = await connection.query('SELECT * FROM sessions WHERE token = $1;', [token]);
+  return session.rows[0];
+}
