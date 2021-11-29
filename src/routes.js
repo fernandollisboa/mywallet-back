@@ -15,5 +15,6 @@ routes.post('/login', userController.postLogin);
 
 routes.post('/transactions', auth, transactionController.postTransaction);
 routes.get('/transactions', auth, transactionController.getUserTransactions);
+routes.get('/transactions/balance', auth, transactionController.getUserBalance);
 
 export default routes;

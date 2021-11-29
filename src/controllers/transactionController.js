@@ -43,3 +43,17 @@ export async function getUserTransactions(req, res) {
     return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
   }
 }
+
+export async function getUserBalance(req, res) {
+  const { userId } = req.body;
+
+  try {
+    const userBalance = await transactionService.getUserBalance({ userId });
+    if (!userBalance) return res.sendStatus(statusCode.BAD_REQUEST);
+
+    return res.status(statusCode.OK).send({ userBalance });
+  } catch (err) {
+    console.log(err.stack);
+    return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
+  }
+}

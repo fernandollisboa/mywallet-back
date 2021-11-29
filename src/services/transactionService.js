@@ -1,7 +1,7 @@
 import * as transactionRepository from '../repositories/transactionRepository.js';
 
 export async function createTransaction({ userId, transaction: { type, value } }) {
-  if (!['OUT', 'IN'].includes(type)) return null;
+  if (type === 'INC' && type === 'OUT') return null;
   if (value < 0.01) return null;
 
   const createdTransaction = await transactionRepository.insert({
@@ -14,4 +14,16 @@ export async function createTransaction({ userId, transaction: { type, value } }
 
 export async function getUserTransactions({ userId }) {
   return transactionRepository.selectAllByUserId({ userId });
+}
+
+export async function getUserBalance({ userId }) {
+  const userTransactions = await transactionRepository.selectAllByUserId({ userId });
+
+  const valuesArray = userTransactions.map((t) => (t.type === 'INC' ? t.value : t.value * -1));
+  console.log(valuesArray);
+
+  const sum = valuesArray.map((v) => Number(v)).reduce((total, curr) => total + curr);
+  console.log('feijoada');
+
+  return sum;
 }
