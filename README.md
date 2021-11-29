@@ -31,7 +31,7 @@ You can find its online deployment [here](https://your-wallet.vercel.app/). With
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/fernandollisboa/mywallet-back.git
+   git clone https://github.com/fernandollisboa/your-wallet-backend.git
    ```
 2. Install NPM packages
    ```sh
@@ -57,5 +57,5 @@ You can find its online deployment [here](https://your-wallet.vercel.app/). With
    ```sh
    npm start
    ```
-6. (Optional) If you prefer to have the whole project in your machine, also install the [front-end rep](https://github.com/fernandollisboa/mywallet-front).
+6. (Optional) If you prefer to have the whole project in your machine, also install the [front-end rep](https://github.com/fernandollisboa/your-wallet-frontend).
 
