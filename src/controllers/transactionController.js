@@ -7,6 +7,7 @@ export async function postTransaction(req, res) {
 
   const joiValidation = transactionSchema.validate({ value, type, description });
   if (joiValidation.error) {
+    console.log(joiValidation.error);
     return res.sendStatus(statusCode.BAD_REQUEST);
   }
 
