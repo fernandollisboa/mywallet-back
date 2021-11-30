@@ -1,11 +1,10 @@
-import dayjs from 'dayjs';
+import { formatISO } from 'date-fns';
 import * as transactionRepository from '../repositories/transactionRepository.js';
 
 export async function createTransaction({ userId, transaction: { type, value, description } }) {
   if (type === 'INC' && type === 'OUT') return null;
   if (value < 0.01) return null;
-  const createdAt = dayjs().format('DD-MM-YY');
-
+  const createdAt = formatISO(new Date());
   const createdTransaction = await transactionRepository.insert({
     userId,
     transaction: { type, value, description, createdAt },

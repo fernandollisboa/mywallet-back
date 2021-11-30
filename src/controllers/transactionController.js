@@ -26,6 +26,7 @@ export async function postTransaction(req, res) {
 
     return res.sendStatus(statusCode.CREATED);
   } catch (err) {
+    console.log(err);
     return res.sendStatus(statusCode.INTERNAL_SERVER_ERROR);
   }
 }
