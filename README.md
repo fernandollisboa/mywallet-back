@@ -53,9 +53,10 @@ You can find its online deployment [here](https://your-wallet.vercel.app/). With
    const JWT_SECRET = something_really_secret
    ```
 4. Enter your database and run `./dump.sql`. 
-5. Run 
+
+5. Install the [front-end repo](https://github.com/fernandollisboa/your-wallet-frontend).
+6. Run 
    ```sh
    npm start
    ```
-6. (Optional) If you prefer to have the whole project in your machine, also install the [front-end rep](https://github.com/fernandollisboa/your-wallet-frontend).
 
