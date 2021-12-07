@@ -33,29 +33,20 @@ You can find its online deployment [here](https://your-wallet.vercel.app/). With
    ```sh
    git clone https://github.com/fernandollisboa/your-wallet-backend.git
    ```
-2. Install NPM packages
+2. Install npm packages
    ```sh
    npm install
    ```
 3. Create a `.env` inside the project's root directory and fill it with your database credencials (see `.env.example`).
-    ```
-    DB_USER=
-    DB_PASSWORD=
-    DB_PORT=
-    DB_HOST=
-    DB_NAME=
-    PORT=
-    DATABASE_URL=
-    JWT_SECRET=  
-    ```
-3. Don't forget to fill your JWT_SECRET in `.env`
-   ```
-   const JWT_SECRET = something_really_secret
-   ```
-4. Enter your database and run `./dump.sql`. 
 
-5. Install the [front-end repo](https://github.com/fernandollisboa/your-wallet-frontend).
-6. Run 
+4. Don't forget to fill your JWT_SECRET in `.env`
+   ```sh
+   JWT_SECRET = something_really_secret
+   ```
+5. Enter your database and run `./dump.sql`. 
+
+6. Install the [front-end repo](https://github.com/fernandollisboa/your-wallet-frontend).
+7. Run 
    ```sh
    npm start
    ```
